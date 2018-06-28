@@ -1,0 +1,74 @@
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+	<ul class="sidebar-nav">
+		<li style="margin-top: 15px;"><a href="/" class="nav-icon"><span
+				class="glyphicon glyphicon-home" aria-hidden="true"></span>Start</a></li>
+		<li><a href="/search" class="nav-icon"><span
+				class="glyphicon glyphicon-search" aria-hidden="true"></span>Suche</a></li>
+		<li><a href="/wechselwirkungen" class="nav-icon"><span
+				class="glyphicon glyphicon-transfer" aria-hidden="true"></span>Wechselwirkungen</a>
+		</li>
+		<hr size=10>
+		<li class="sidebar-brand">Suche</li>
+		<li>
+			<form
+				action="/search?medikament={medikament}(medikament=${medikament})">
+
+				<div class="form-group">
+					<input type="text" name="symptom" class="form-control"
+						placeholder="Symptom" th:value=${symptom}>
+				</div>
+				<div class="form-group">
+					<select class="form-control" name="medikamentId" id="selMedikament"
+						th:value=${medikament} placeholder="Wählen Sie ein Medikament"
+						data-search="true">
+						<option value="">Medikament</option>
+					</select>
+					<input type="hidden" name="medikamentName" id="selMedikamentName" value="">
+				</div>
+				<div class="form-group">
+					<input type="text" name="wirkstoff" class="form-control"
+						placeholder="Wirkstoff" th:value=${wirkstoff}>
+				</div>
+				<div class="form-group">
+					<label class="control-label"><h3>Filter</h3></label><br /> <label
+						for="darreichung" class="control-label">Darreichungsform</label>
+					<div class="checkbox">
+						<label for="darreichung1" class="checkbox-inline"><input
+							type="checkbox" id="darreichung1" name="darreichung"
+							value="tablette">Tablette</label>
+					</div>
+					<div class="checkbox">
+						<label for="darreichung2" class="checkbox-inline"><input
+							type="checkbox" id="darreichung2" name="darreichung" value="saft">Saft</label>
+					</div>
+					<div class="checkbox">
+						<label for="darreichung3" class="checkbox-inline"><input
+							type="checkbox" id="darreichung3" name="darreichung"
+							value="spritze">Spritze</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="wechselwirkungen" class="control-label">Vermeide
+						Wechselwirkungen mit
+						<div class="dropdown">
+							<button class="btn dropdown-toggle form-control" type="button"
+								data-toggle="dropdown" th:value=${wirkstoff}>
+								Wirkstoff <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="#">Ibuprofen</a></li>
+								<li><a href="#">Acetylsalicylsäure</a></li>
+								<li><a href="#">Wirkstoff 3</a></li>
+							</ul>
+						</div>
+					</label>
+
+					<div class="form-group" style="margin-top: 10px;">
+						<button type="submit" class="form-control">Suchen</button>
+					</div>
+			</form>
+		</li>
+	</ul>
+</div>
+<!-- /#sidebar-wrapper -->

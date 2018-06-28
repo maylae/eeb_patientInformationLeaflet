@@ -1,0 +1,31 @@
+{
+	"nodes":[
+ 		{"id":"1","name":"Aspirin","art":"medikament"},
+		{"id":"2","name":"Ibuprofen","art":"medikament"},
+		{"id":"3","name":"Dolormin","art":"medikament"}, 
+		{"id":"4","name":"Durchfall","art":"nebenwirkung"},
+		{"id":"5","name":"Kopfschmerzen","art":"nebenwirkung"},
+		{"id":"6","name":"Schwindel","art":"nebenwirkung"},
+		{"id":"7","name":"Magengeschwür","art":"nebenwirkung"},
+		{"id":"8","name":"Magenblutung","art":"nebenwirkung"},
+		{"id":"9","name":"Übelkeit","art":"nebenwirkung"},
+		{"id":"10","name":"Juckreiz","art":"nebenwirkung"},
+		{"id":"11","name":"Erbrechen","art":"nebenwirkung"}
+],
+"edges":[
+		{"id":"16","source":"1","target":"6","weight":4},
+		{"id":"19","source":"1","target":"9","weight":2},
+		{"id":"110","source":"1","target":"10","weight":1},
+		{"id":"111","source":"1","target":"11","weight":2},
+		{"id":"25","source":"2","target":"5","weight":4},
+		{"id":"26","source":"2","target":"6","weight":3},
+		{"id":"29","source":"2","target":"9","weight":3},
+		{"id":"210","source":"2","target":"10","weight":1},
+		{"id":"211","source":"2","target":"11","weight":2},
+		{"id":"36","source":"3","target":"6","weight":4},
+		{"id":"34","source":"3","target":"4","weight":3},
+		{"id":"35","source":"3","target":"5","weight":2},
+		{"id":"38","source":"3","target":"8","weight":1},
+		{"id":"37","source":"3","target":"7","weight":1}
+		]
+}

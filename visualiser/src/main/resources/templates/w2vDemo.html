@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Word 2 Vec</title>
+
+<!-- Bootstrap core CSS -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.12/cytoscape.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="wrapper" class="toggled">
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<!-- 			<button type="button" class="btn btn-default" id="menu-toggle" aria-label="Suchleiste">
+  				<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+			</button> -->
+			<div class="container align-items-center">
+				<div class="row">
+					<div class="panel panel-default col-10 align-self-center">
+						<div class="panel-heading">
+							<h1>Word2Vec Demo</h1>
+						</div>
+						<div class="panel-body">
+							<h2>Rechnen mit Word 2 Vec</h2>
+							<form class="form col-lg-12"
+								action="/w2vDemo?posTerms={posTerms}&negTerms={negTerms}(posTerms=${posTerms},negTerms=${negTerms})">
+								<div class="form-group">
+									<input type="text" name="posTerms" class="form-control"
+										placeholder="Pos. Suchbegriff" th:value=${posTerms}>
+								</div>
+								<div class="form-group">
+									<input type="text" name="negTerms" class="form-control"
+										placeholder="Neg. Suchbegriff" th:value=${negTerms}>
+								</div>
+								<div class="form-group align-self-center col-lg-4">
+									<button type="submit"
+										class="form-control">Suchen</button>
+								</div>
+							</form>
+
+						</div>
+					</div>
+				</div>
+				<h3>Suchergebnisse:</h3>
+				<div class="row">
+					<p th:each="res : ${searchResults}" th:text="${res}"></p>
+				</div>
+			</div>
+			<!-- /#page-content-wrapper -->
+
+		</div>
+		<!-- /#wrapper -->
+</body>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+</html>

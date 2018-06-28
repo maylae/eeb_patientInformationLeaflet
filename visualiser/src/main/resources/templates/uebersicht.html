@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Medikamentensuche</title>
+
+<!-- Bootstrap core CSS -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="wrapper" class="toggled">
+		<div th:replace="sidebar"></div>
+		
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+<!-- 			<button type="button" class="btn btn-default" id="menu-toggle" aria-label="Suchleiste">
+  				<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+			</button> -->
+			<div class="panel panel-default">
+				<div class="panel-heading"><h1>Übersicht</h1></div>
+				<div class="panel-body">
+				
+			<div id="scatterplot" class="cy col-lg-12"></div>
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+</body>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="tsne-test.json"></script>
+	<script>
+		var dataset = [];
+
+		// load the external data
+		dataset = graph;//jQuery.getJSON("graph.json");
+
+		console.log(dataset);
+		
+		var newScaledData = [];
+
+		var linearScale = d3.scale.linear().domain([ -100000, 100000 ]).range(
+				[ 0, 1000 ]);
+
+		for (var i = 0; i < dataset.length; i++) {
+			var jsonData = {};
+			jsonData.x = linearScale(dataset[i]["x"]);
+			jsonData.y = linearScale(dataset[i]["y"]);
+			jsonData.label = dataset[i]["label"];
+			newScaledData[i] = jsonData;
+		}
+		console.log(newScaledData);
+
+		var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		width = 2000 - margin.left - margin.right,
+		height = 1000 - margin.top - margin.bottom;
+		
+		var svg = d3.select("#scatterplot")
+			.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom);
+
+		svg.selectAll("circle").data(newScaledData).enter().append("circle")
+				.attr("cx", function(d) {
+					return d.x;
+				}).attr("cy", function(d) {
+					return d.y;
+				}).attr("r", 5);
+
+		svg.selectAll("text").data(newScaledData).enter().append("text").text(
+				function(d) {
+					return d.label;
+				}).attr("x", function(d) {
+			return d.x;
+		}).attr("y", function(d) {
+			return d.y;
+		})
+	</script>
+</html>

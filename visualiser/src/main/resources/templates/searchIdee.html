@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Medikamentensuche</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 	https://github.com/select2/select2 -->
+<script src="js/select2.min.js" type='text/javascript'></script>
+<!-- CSS -->
+<link href="css/select2.min.css" rel='stylesheet' type='text/css'>
+<style>
+.node circle {
+	fill: #fff;
+	stroke: steelblue;
+	stroke-width: 3px;
+}
+
+.node text {
+	font: 12px sans-serif;
+}
+
+.link {
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 2px;
+}
+</style>
+</head>
+
+<body>
+	<div id="wrapper" class="toggled">
+		<div th:replace="sidebar"></div>
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>Medikamentensuche leicht gemacht</h2>
+				</div>
+				<div class="panel-body">
+					<h3>
+						Ergebnis der Suche nach <span th:text=${symptom}
+							style="color: green"></span>
+					</h3>
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#nebenwirkungen"
+							data-toggle="tab">Suchergebnisse mit Nebenwirkungen</a></li>
+						<li><a href="#wechselwirkungen" data-toggle="tab">Suchergebnisse
+								mit Wechselwirkungen</a></li>
+					</ul>
+					<div class="tab-content" id="tabs">
+						<div class="tab-pane fade active in" id="nebenwirkungen">
+							<p>
+								Die Linienstärke und -farbe zeigt die Häufigkeit, mit der die
+								jeweiligen Nebenwirkungen bei einem Medikament auftreten:<br />
+								<svg height="10" width="10">
+  									<circle cx="5" cy="5" r="5" fill="#ff4d4d" />
+  								</svg>
+								1 von 10<br />
+								<svg height="10" width="10">
+  									<circle cx="5" cy="5" r="5" fill="#ff6600" />
+  								</svg>
+								1 von 100<br />
+								<svg height="10" width="10">
+  									<circle cx="5" cy="5" r="5" fill="#ffa31a" />
+  								</svg>
+								1 von 1.000<br />
+								<svg height="10" width="10">
+  									<circle cx="5" cy="5" r="5" fill="#ffcc00" />
+  								</svg>
+								1 von 10.000
+							</p>
+							<div class="col-lg-10">
+								<div id="graph" class="cy col-lg-6"></div>
+								<div id="details" class="cy col-lg-6">
+									<table class="table">
+										<thead>
+											<th scope="col">Medikament</th>
+											<th scope="col">Wirkstoffe</th>
+											<th scope="col">Formen</th>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="tab-pane" id="wechselwirkungen">
+							<svg id="svg" width="700" height="500"></svg>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+</body>
+// Graphen für Suchergebnisse erstellen
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="js/d3graph.js"></script>
+<script src="js/drawWechselwirkungen.js"></script>
+<script src="js/initSelect.js"></script>
+<script>
+	src = "js/createDetailsTable.js"
+</script>
+<script th:inline="javascript">
+	/*<![CDATA[*/
+	var searchMed = /*[[${medikamentName}]]*/'';
+	/*]]>*/
+	drawWechselwirkungen(searchMed);
+	drawGraphIdee(searchMed, "data/beispielDaten.json");
+	$(document).ready(function() {
+		myInitSelect("data/beispielNamen.json");
+
+	});
+</script>
+</html>

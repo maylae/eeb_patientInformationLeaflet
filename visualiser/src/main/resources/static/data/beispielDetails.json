@@ -1,0 +1,5 @@
+	[
+		{"id":"1","name":"Aspirin","abgabeformen":"Brausetabletten, Dragees, Granulat, Tabletten", "wirkstoff":"Acetylsalicylsäure"},
+		{"id":"2","name":"Ibuprofen","abgabeformen":"Filmtabletten, Schmerzgel, Tabletten, Suppositorien", "wirkstoff":"Ibuprofen"},
+		{"id":"3","name":"Dolormin","abgabeformen":"Filmtabletten, Saft, Suspension, Weichkapseln", "wirkstoff":"Ibuprofen, Lysin"}
+]

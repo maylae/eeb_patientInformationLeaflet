@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Medikamentensuche</title>
+
+<!-- Bootstrap core CSS -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.12/cytoscape.js"></script>
+
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- 	https://github.com/select2/select2 -->
+<script src="js/select2.min.js" type='text/javascript'></script>
+<!-- CSS -->
+<link href="css/select2.min.css" rel='stylesheet' type='text/css'>
+<style>
+#human_body {
+	/* http://www.supercoloring.com/de/silhouetten/maennlicher-koerper */
+	background-image: url("images/male-body-outline-silhouette.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	margin-bottom: 30px;
+	margin-left: 20%;
+	margin-top: 20px;
+	height: 700px;
+	width: auto;
+}
+</style>
+</head>
+
+<body>
+	<div id="wrapper" class="toggled">
+		<div th:replace="sidebar"></div>
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2>Medikamentensuche leicht gemacht</h2>
+				</div>
+				<div class="panel-body">
+					<p>Suchen Sie nach Medikamenten oder Symptomen und erhalten Sie
+						einen Überblick über Nebenwirkungen verschiedener Medikamente und
+						deren Wechselwirkungen untereinander.
+					<p>
+					</h3>
+				</div>
+
+			</div>
+			<div class="col-lg-12">
+				<div id="human_body" class="col-lg-6"></div>
+				<div id="allgemein" class="col-lg-6">
+					<h2>Allgemeine Beschwerden</h2>
+					<ul>
+						<li>Kreislauf</li>
+						<li>Beruhigung & Schlaf</li>
+						<li>Entgiften</li>
+						<li>Erkältung & Immunsystem</li>
+						<li>Wundbehandlung</li>
+						<li>Diabetes</li>
+						<li>Schmerzen</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#wrapper -->
+</body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="js/initSelect.js"></script>
+<script src="js/drawBody.js"></script>
+<script>
+$(document).ready(function(){
+	myInitSelect("data/med_namen.json");
+	$("#selMedikament").on("select2:select", function (e) { 
+		$("#selMedikamentName").val(e.params.data.text); 
+	});
+});
+</script>
+</html>

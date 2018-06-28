@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Medikamentensuche</title>
+
+<!-- Bootstrap core CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+g a:hover {
+	cursor:pointer;
+}
+</style>
+</head>
+<body>
+	<div id="wrapper" class="toggled">
+		<div th:replace="sidebar"></div>
+		
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+<!-- 			<button type="button" class="btn btn-default" id="menu-toggle" aria-label="Suchleiste">
+  				<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+			</button> -->
+			<div class="panel panel-default">
+				<div class="panel-heading"><h1>Wechselwirkungen</h1></div>
+				<div class="panel-body">
+					<span th:if="${medikament != null}" th:text="${medikament}"
+						style="font-size: 18px; color:green; font-weight:bold;">Static summary</span>
+				</div>			
+			
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
+
+</body>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="js/drawWechselwirkungen.js"></script>
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+        var searchMed = /*[[${medikament}]]*/ 'default';
+    /*]]>*/
+    console.log(searchMed);
+	drawWechselwirkungen(searchMed);
+    </script>
+</html>

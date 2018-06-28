@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"group":"1","name":"Aspirin"},
+		{"group":"2","name":"Ibuprofen"},
+		{"group":"3","name":"Dolormin"},
+		{"group":"4","name":"Bronchipret"},
+		{"group":"3","name":"Marcumar"}
+],
+"links":[
+		{"source":"0","target":"2","weight":3},
+		{"source":"1","target":"3","weight":4},
+		{"source":"3","target":"4","weight":2},
+		{"source":"0","target":"3","weight":2},
+		{"source":"4","target":"1","weight":2}
+		]
+}

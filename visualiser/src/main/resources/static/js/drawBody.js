@@ -11,50 +11,62 @@ var margin = {
 
 	var bodyparts = [ {
 		"name" : "Augen, Ohren & Nase",
+		"href": "/search?symptom=Augen+Ohren+Nase",
 		"x" : width * 0.42,
 		"y" : height * 0.08
 	}, {
 		"name" : "Haut, Haare & Nägel",
+		"href": "/search?symptom=Haut+Haare+Nägel",
 		"x" : width * 0.85,
 		"y" : height * 0.57
 	}, {
 		"name" : "Herz",
+		"href": "/search?symptom=Herz",
 		"x" : width * 0.5,
 		"y" : height * 0.26
 	}, {
 		"name" : "Magen, Darm & Verdauung",
+		"href": "/search?symptom=Magen+Darm+Verdauung",
 		"x" : width * 0.42,
 		"y" : height * 0.45
 	}, {
 		"name" : "Muskeln, Knochen & Gelenke",
+		"href": "/search?symptom=Muskeln+Knochen+Gelenke",
 		"x" : width * 0.42,
 		"y" : height * 0.8
 	}, {
 		"name" : "Allergie & Asthma",
+		"href": "/search?symptom=Allergie+Asthma",
 		"x" : width * 0.42,
 		"y" : height * 0.22
 	}, {
 		"name" : "Frauen",
+		"href": "/search?symptom=Frauen",
 		"x" : width * 0.32,
 		"y" : height * 0.55
 	}, {
 		"name" : "Männer",
+		"href": "/search?symptom=Männer",
 		"x" : width * 0.52,
 		"y" : height * 0.55
 	}, {
 		"name" : "Mund & Rachen",
+		"href": "/search?symptom=Mund+Rachen+Halsschmerzen",
 		"x" : width * 0.42,
 		"y" : height * 0.13
 	}, {
 		"name" : "Nerven & Psyche",
+		"href": "/search?symptom=Nerven+Psyche+Psycho",
 		"x" : width * 0.42,
 		"y" : height * 0.04
 	}, {
 		"name" : "Niere & Blase",
+		"href": "/search?symptom=Niere+Blase",
 		"x" : width * 0.42,
 		"y" : height * 0.5
 	}, {
 		"name" : "Schilddrüse",
+		"href": "/search?symptom=Schilddrüse",
 		"x" : width * 0.42,
 		"y" : height * 0.17
 	} ];
@@ -66,7 +78,8 @@ var margin = {
 
 	var g = svg.selectAll("g")
     .data(bodyparts)
-  .enter().append("g");
+  .enter().append("g").append("a")
+  .attr("xlink:href", function(d) { return d.href; });
 
 	/*http://bl.ocks.org/andreaskoller/7674031*/
 	g.append("rect"); // placeholder for background rect, position and size will be defined later

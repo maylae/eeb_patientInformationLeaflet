@@ -36,7 +36,7 @@
 						<div class="panel-body">
 							<h2>Rechnen mit Word 2 Vec</h2>
 							<form class="form col-lg-12"
-								action="/w2vDemo?posTerms={posTerms}&negTerms={negTerms}(posTerms=${posTerms},negTerms=${negTerms})">
+								th:action="/w2vDemo?posTerms={posTerms}&negTerms={negTerms}(posTerms=${posTerms},negTerms=${negTerms})">
 								<div class="form-group">
 									<input type="text" name="posTerms" class="form-control"
 										placeholder="Pos. Suchbegriff" th:value=${posTerms}>

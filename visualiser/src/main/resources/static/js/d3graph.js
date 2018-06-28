@@ -1,15 +1,6 @@
-function loadData(filename){
-	$.getJSON(filename, function(data) {
-		return data;
-	});
-}
-
 function drawGraphIdee(searchMed, filename) {
 	
-		var data;
-		if(filename != "") {
-			data = loadData(filename);
-		}
+	$.getJSON(filename, function(data) {
 
 		var filteredMedikamente = [];
 		var filteredNebenwirkungen = [];
@@ -142,6 +133,7 @@ function drawGraphIdee(searchMed, filename) {
 			console.log(id);
 			addToDetailsTable(id);
 		});
+	});
 }
 
 

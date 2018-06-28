@@ -65,13 +65,13 @@
 				<div id="allgemein" class="col-lg-6">
 					<h2>Allgemeine Beschwerden</h2>
 					<ul>
-						<li>Kreislauf</li>
-						<li>Beruhigung & Schlaf</li>
-						<li>Entgiften</li>
-						<li>Erkältung & Immunsystem</li>
-						<li>Wundbehandlung</li>
-						<li>Diabetes</li>
-						<li>Schmerzen</li>
+						<li><a href="/search?symptom=Kreislauf">Kreislauf</a></li>
+						<li><a href="/search?symptom=Schlaf+Beruhigung">Beruhigung & Schlaf</a></li>
+						<li><a href="/search?symptom=Entgiften+Entschlacken">Entgiften</a></li>
+						<li><a href="/search?symptom=Erkältung+Immunsystem">Erkältung & Immunsystem</a></li>
+						<li><a href="/search?symptom=Wundbehandlung+Wunden">Wundbehandlung</a></li>
+						<li><a href="/search?symptom=Diabetes">Diabetes</a></li>
+						<li><a href="/search?symptom=Schmerzen">Schmerzen</a></li>
 					</ul>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 <script src="js/drawBody.js"></script>
 <script>
 $(document).ready(function(){
-	myInitSelect("data/med_namen.json");
+	myInitSelect("data/selectOptions.json");
 	$("#selMedikament").on("select2:select", function (e) { 
 		$("#selMedikamentName").val(e.params.data.text); 
 	});

@@ -125,11 +125,11 @@
 	/*<![CDATA[*/
 	var searchMed = /*[[${medikamentName}]]*/'';
 	/*]]>*/
-	drawWechselwirkungen(searchMed);
-	drawGraphIdee(searchMed, "data/beispielDaten.json");
+	
 	$(document).ready(function() {
 		myInitSelect("data/beispielNamen.json");
-
+		drawWechselwirkungen(searchMed);
+		drawGraphIdee(searchMed, "data/beispielDaten.json");
 	});
 </script>
 </html>
